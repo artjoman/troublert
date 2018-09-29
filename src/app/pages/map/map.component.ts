@@ -6,13 +6,19 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
 })
 export class MapComponent {
 
+<<<<<<< HEAD
   constructor(
     private http: HttpClient
   ) { }
+=======
+  startDate = new Date();
+
+  constructor() { }
+>>>>>>> fcb595f7169a694e2a38347f8371f4da3a9f119c
 
   baseLayer = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     detectRetina: true,
@@ -3582,6 +3588,10 @@ export class MapComponent {
   }
   circleOut(index) {
     this.circleLayers[index].setStyle({ color: 'red', fillColor: 'red' });
+  }
+
+  displayDialog(event$: any) {
+
   }
 
 }
