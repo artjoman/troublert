@@ -20,7 +20,7 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="map" leaflet [leafletOptions]="options">
+<div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
 </div>
 
 <mat-toolbar layout-align="center center">
@@ -29,4 +29,4 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<button mat-fab class="test"><i class="material-icons">cached</i></button>
+<button mat-fab class="test" (click)="loopCircleData()"><i class="material-icons">cached</i></button>
