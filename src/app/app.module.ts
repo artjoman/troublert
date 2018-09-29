@@ -12,6 +12,7 @@ import { TeamComponent } from './pages/team/team.component';
 import { InfoComponent } from './pages/info/info.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MapComponent } from './pages/map/map.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MapComponent } from './pages/map/map.component';
     MatMenuModule,
     MatIconModule,
     MatGridListModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

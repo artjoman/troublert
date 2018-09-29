@@ -7,7 +7,7 @@ html, body {
   }
 
   .test{
-    position: fixed;
+    position: fixed !important;
     bottom: 50px;
     right: 50px;
     z-index: 999;
