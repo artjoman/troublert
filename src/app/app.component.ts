@@ -41,7 +41,7 @@ export class AppComponent {
     {
       'index': 'LV1005',
       'lat': '56.9573662',
-      'lng': '24.1699864',
+      'lng': '24.16599864',
       'radius': '100',
       'dif': '5'
     }]
@@ -77,13 +77,6 @@ export class AppComponent {
 
 
 
-
-
-
-
-
-
-
   loopCircleData() {
 
     const object = this.circlesData.data;
@@ -99,12 +92,21 @@ export class AppComponent {
     console.log('Adding circle: ', cr.index, 'with data: ', cr.lat, '::', cr.lng, '::', cr.radius, '::', cr.dif);
     this.circleLayers[cr.index] = circle([cr.lat, cr.lng], { radius: cr.radius, stroke: false, color: 'red', fillColor: 'red' });
 
+    this.circleLayers[cr.index].on({
+      mouseover: () => { this.circleOver(cr.index); },
+      mouseout: () => { this.circleOut(cr.index); }
+    });
 
     this.circleLayers[cr.index].addTo(this.map);
 
   }
 
-
+  circleOver(index) {
+    this.circleLayers[index].setStyle({ color: 'blue', fillColor: 'blue' });
+  }
+  circleOut(index) {
+    this.circleLayers[index].setStyle({ color: 'red', fillColor: 'red' });
+  }
 
 
 
