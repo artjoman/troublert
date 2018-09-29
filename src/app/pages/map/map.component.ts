@@ -5,9 +5,11 @@ import * as L from 'leaflet';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
 })
 export class MapComponent {
+
+  startDate = new Date();
 
   constructor() { }
 
@@ -107,6 +109,10 @@ export class MapComponent {
   }
   circleOut(index) {
     this.circleLayers[index].setStyle({ color: 'red', fillColor: 'red' });
+  }
+
+  displayDialog(event$: any) {
+
   }
 
 }

@@ -1,5 +1,12 @@
 <div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
 </div>
+<button mat-fab color="primary" class="calendar" (click)="displayDialog($event)">
+    <i class="material-icons">calendar_today</i>
+</button>
+<div class="calendar-block">
+    <input [(ngModel)]="startDate" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5">
+    <owl-date-time [pickerMode]="'dialog'" [stepMinute]="15" #dt5></owl-date-time>
+</div>
 <button mat-fab class="test" (click)="loopCircleData()">
     <i class="material-icons">cached</i>
 </button>
