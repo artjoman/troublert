@@ -12,3 +12,18 @@
     margin-top: 0.5em;
     margin-right: 1em;
   }
+
+  .right-menu {
+    float: right;
+  }
+
+  .menu-item {
+    margin: 0.5em;
+    cursor: pointer;
+  }
+
+  .fill-space {
+    /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
