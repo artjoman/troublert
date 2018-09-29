@@ -13,6 +13,9 @@ import { InfoComponent } from './pages/info/info.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MapComponent } from './pages/map/map.component';
 import { MatButtonModule } from '@angular/material/button';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,10 +23,11 @@ import { MatButtonModule } from '@angular/material/button';
     SchemaComponent,
     TeamComponent,
     InfoComponent,
-    MapComponent
+    MapComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     LeafletModule.forRoot(),
     MatToolbarModule,
@@ -31,6 +35,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatGridListModule,
     MatButtonModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
