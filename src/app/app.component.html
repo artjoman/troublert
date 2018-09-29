@@ -7,21 +7,23 @@
 
         <span class="fill-space"></span>
         <span class="right-menu">
-            <span class="menu-item">
+            <span class="menu-item" [routerLink]="['map']">
+                <mat-icon>place</mat-icon>
+            </span>
+            <span class="menu-item" [routerLink]="['schema']">
                 <mat-icon>graphic_eq</mat-icon>
             </span>
-            <span class="menu-item">
+            <span class="menu-item" [routerLink]="['team']">
                 <mat-icon>people</mat-icon>
             </span>
-            <span class="menu-item">
+            <span class="menu-item" [routerLink]="['info']">
                 <mat-icon>info</mat-icon>
             </span>
         </span>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="map" leaflet [leafletOptions]="options">
-</div>
+<router-outlet></router-outlet>
 
 <mat-toolbar layout-align="center center">
     <mat-toolbar-row>
@@ -29,4 +31,6 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<button mat-fab class="test"><i class="material-icons">cached</i></button>
+<button mat-fab class="test">
+    <i class="material-icons">cached</i>
+</button>
