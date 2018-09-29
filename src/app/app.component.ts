@@ -56,22 +56,22 @@ export class AppComponent {
   // [46.85290292836726, -121.76049157977104],
   // [46.8528160918504, -121.76042997278273]]);
 
-  // // Layers control object with our two base layers and the three overlay layers
-  // layersControl = {
-  //   baseLayers: {
-  //     'Street Maps': this.streetMaps,
-  //     'Wikimedia Maps': this.wMaps
-  //   },
-  //   overlays: {
-  //     'Mt. Rainier Summit': this.summit,
-  //     'Mt. Rainier Paradise Start': this.paradise,
-  //     'Mt. Rainier Climb Route': this.route
-  //   }
-  // };
+  // Layers control object with our two base layers and the three overlay layers
+  layersControl = {
+    baseLayers: {
+      'Street Maps': this.streetMaps,
+      'Wikimedia Maps': this.wMaps
+    },
+    // overlays: {
+    //   'Mt. Rainier Summit': this.summit,
+    //   'Mt. Rainier Paradise Start': this.paradise,
+    //   'Mt. Rainier Climb Route': this.route
+    // }
+  };
 
   // Set the initial set of displayed layers (we could also use the leafletLayers input binding for this)
   options = {
-    // layers: [this.streetMaps, this.route, this.summit, this.paradise],
+    layers: [this.streetMaps],
     zoom: 8,
     center: latLng([56.879966, 24.726909])
   };

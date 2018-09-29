@@ -1,4 +1,17 @@
-<div class="map"
-     leaflet
-     [leafletOptions]="options">
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>
+            <img src="/assets/troublert.png" width="100px" class="logo">
+        </span>
+        <span> Your friedly neighbourhood Crime Finders</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="map" leaflet [leafletOptions]="options">
 </div>
+
+<mat-toolbar layout-align="center center">
+    <mat-toolbar-row>
+        <span class="footer-center">Troublert ©2018</span>
+    </mat-toolbar-row>
+</mat-toolbar>

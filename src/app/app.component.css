@@ -2,3 +2,13 @@
     height: 100%;
     padding: 0;
   }
+
+  .footer-center {
+    margin: 0 auto;
+    font-size: 0.5em;
+  }
+
+  .logo {
+    margin-top: 0.5em;
+    margin-right: 1em;
+  }
