@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { icon, latLng, marker, polyline, tileLayer, circle, Map } from 'leaflet';
-import * as L from 'leaflet';
+import { HttpClient } from '@angular/common/http';
+// import * as L from 'leaflet';
 
 @Component({
   selector: 'app-map',
@@ -9,7 +10,9 @@ import * as L from 'leaflet';
 })
 export class MapComponent {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   baseLayer = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     detectRetina: true,
@@ -3529,12 +3532,12 @@ export class MapComponent {
 
 
 
-  // makeRequest(): void {
-  //   this.http.request('http://ec2-35-171-2-201.compute-1.amazonaws.com:8080/services/troublet/getdata/2018-04-13 12:14:00/2018-04-13 12:16:00')
-  //     .subscribe((res: Response) => {
-  //       this.circlesData = res.json();
-  //     });
-  // }
+  makeRequest(): void {
+    this.http.get('http://ec2-35-171-2-201.compute-1.amazonaws.com:8080/services/troublet/getdata/2018-04-13 12:14:00/2018-04-13 12:16:00')
+      .subscribe((res: Response) => {
+        this.circlesData = res;
+      });
+  }
 
 
 
