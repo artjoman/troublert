@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { icon, latLng, marker, polyline, tileLayer } from 'leaflet';
+import { icon, latLng, marker, polyline, tileLayer, circle, Map } from 'leaflet';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-map',
@@ -10,50 +11,102 @@ export class MapComponent {
 
   constructor() { }
 
-  map = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  baseLayer = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     detectRetina: true,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
 
 
-  circles = {
-    LV1000: { lat: 56.9473662, lng: 24.1199864, radius: 100 },
-    LV1001: { lat: 56.961892, lng: 24.1230324, radius: 1000 },
-    LV1002: { lat: 56.9307861, lng: 24.0666199, radius: 1000 },
-    LV1003: { lat: 56.9399729, lng: 24.1387314, radius: 1200 },
-    LV1004: { lat: 56.9218272, lng: 24.1104354, radius: 1200 },
-    LV1005: { lat: 56.9958331, lng: 24.1144727, radius: 1500 },
-    LV1006: { lat: 56.9880202, lng: 24.1964526, radius: 3000 },
-    LV1007: { lat: 56.9946275, lng: 24.0764101, radius: 1200 },
-    LV1009: { lat: 56.951978, lng: 24.1482538, radius: 1200 },
-    LV1010: { lat: 56.9589215, lng: 24.1046542, radius: 1200 },
-    LV1011: { lat: 56.9527388, lng: 24.1275531, radius: 1200 }
+  circlesData = {
+    'data': [{
+      'index': 'LV1002',
+      'lat': '56.9173662',
+      'lng': '24.1149864',
+      'radius': '100',
+      'dif': '5'
+    },
+    {
+      'index': 'LV1003',
+      'lat': '56.9473662',
+      'lng': '24.1199864',
+      'radius': '100',
+      'dif': '5'
+    },
+    {
+      'index': 'LV1004',
+      'lat': '56.9273662',
+      'lng': '24.1299864',
+      'radius': '100',
+      'dif': '5'
+    },
+    {
+      'index': 'LV1005',
+      'lat': '56.9573662',
+      'lng': '24.16599864',
+      'radius': '100',
+      'dif': '5'
+    }]
   };
 
   // // Layers control object with our two base layers and the three overlay layers
-  layersControl = {
-    baseLayers: {
-      'Map': this.map
-    },
-    overlays: {
-      // 'Circles': this.circles;
-    }
-  };
+  // layersControl = {
+  //   baseLayers: {
+  //     // 'Map': this.baseLayer
+  //   },
+  //   overlays: {
+  //     // 'Circles': this.circles;
+  //   }
+  // };
 
   // Set the initial set of displayed layers (we could also use the leafletLayers input binding for this)
   options = {
-    layers: [this.map],
+    layers: [this.baseLayer],
     zoom: 8,
     center: latLng([56.879966, 24.726909])
   };
 
 
+  circleLayers = [];
+  map;
+
+
+  onMapReady(map: Map) {
+    console.log('Map ready');
+    this.map = map;
+  }
+
+
+
+
   loopCircleData() {
-    for (const key in this.circles) {
-      if (this.circles.hasOwnProperty(key)) {
-        const value = this.circles[key];
-        console.log(key, '::', value.radius);
+
+    const object = this.circlesData.data;
+    for (const obj in object) {
+      if (object.hasOwnProperty(obj)) {
+        const cr = object[obj];
+        this.createCircle(cr);
       }
     }
   }
+
+  createCircle(cr) {
+    console.log('Adding circle: ', cr.index, 'with data: ', cr.lat, '::', cr.lng, '::', cr.radius, '::', cr.dif);
+    this.circleLayers[cr.index] = circle([cr.lat, cr.lng], { radius: cr.radius, stroke: false, color: 'red', fillColor: 'red' });
+
+    this.circleLayers[cr.index].on({
+      mouseover: () => { this.circleOver(cr.index); },
+      mouseout: () => { this.circleOut(cr.index); }
+    });
+
+    this.circleLayers[cr.index].addTo(this.map);
+
+  }
+
+  circleOver(index) {
+    this.circleLayers[index].setStyle({ color: 'blue', fillColor: 'blue' });
+  }
+  circleOut(index) {
+    this.circleLayers[index].setStyle({ color: 'red', fillColor: 'red' });
+  }
+
 }
